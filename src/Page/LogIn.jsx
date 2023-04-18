@@ -1,7 +1,34 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react'
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../FIrebase/AuthProviders'
 
 const LogIn = () => {
+
+     const {signIn} = useContext(AuthContext)
+
+   const evenLogin = (e)=>{
+    e.preventDefault()      
+ const form  =  e.target;
+  const email  = form.email.value;
+  const password  = form.password.value;
+
+      signIn(email,password)
+      .then(res =>{
+        const user = res.user
+       if (user.email) {
+           alert(' Log In successfull')
+           console.log(user);
+        
+       }else{
+        alert(' email or password  wrong ')
+       }
+      })
+      .catch(error =>{
+        alert(error)
+      })
+
+
+   }
   return (
     <div>
 
@@ -11,7 +38,7 @@ const LogIn = () => {
 
          <h2 className='text-center my-5  text-3xl font-semibold '>  Please Log In </h2>
         
-<form className="flex flex-col gap-4">
+<form  onSubmit={evenLogin} className="flex flex-col gap-4">
   <div>
     <div className="mb-2 block">
       <Label
@@ -24,6 +51,7 @@ const LogIn = () => {
       type="email"
       placeholder="name@flowbite.com"
       required={true}
+      name='email'
     />
   </div>
   <div>
@@ -37,6 +65,7 @@ const LogIn = () => {
       id="password1"
       type="password"
       required={true}
+      name='password'
     />
   </div>
   <div className="flex items-center gap-2">

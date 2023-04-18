@@ -20,6 +20,7 @@ const NvabarCom = () => {
         
          </ul>
          <Link to={'/login'} className=' text-lg font-semibold hover:text-teal-700 hover:font-bold border-2 border-teal-300 hover:bg-teal-100 hover:border-teal-500 px-3 py-1 rounded-lg shadow-md '> Log In</Link>
+         <Link to={'/register'} className=' text-lg font-semibold hover:text-teal-700 hover:font-bold border-2 border-teal-300 hover:bg-teal-100 hover:border-teal-500 px-3 py-1 rounded-lg shadow-md '> Register</Link>
        </nav>
 
 
